@@ -8,9 +8,33 @@ python -m venv .venv
 ```
 Sendo `.venv` o nome do arquivo do ambiente virtual que será criado.
 
-Com ambiente virtual criado, utilizamos o seguinte código e não comprometemos o projeto com arquivos externos.
+É necessário ativar o ambiente virtual, para use o seguinte código:
+Windows:
+```
+\.venv\Scripts\Activate
+```
+Terminal Linux no Windows:
+```
+source \.venv\Scripts\Activate
+```
+Terminal Linux:
+```
+source \.venv\bin\Activate
+```
+
+Com ambiente virtual criado e ativo, utilizamos o seguinte código e não comprometemos o projeto com arquivos externos.
 ```
 pip install django pillow
+```
+
+## Resolvendo o problema com o PowerShell
+No PowerShell pode ocorrer um erro ao ativar o ambiente virtual. Vamos resolver o problema com o powershell. Primeiramente iremos visualizar qual a política de execução do seu powershell, use o comando:
+```
+Get-ExecutionPolicy
+```
+Caso o terminal informe como `Restricted`, altere para `Bypass` com o seguinte comando e tente repetir o processo da página 3:
+```
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 ```
 
 ## Iniciando o servidor do Django
