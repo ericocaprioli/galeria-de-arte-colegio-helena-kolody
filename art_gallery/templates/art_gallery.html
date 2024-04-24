@@ -90,17 +90,19 @@
             margin-top: 20px;
         }
         .artwork {
-            width: calc(50% - 10px); /* Para ocupar metade da largura com espaço entre as imagens */
-            margin-bottom: 20px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            background-color: #fff;
-            border-radius: 5px;
-            box-sizing: border-box;
+            width: calc(25% - 20px); /* Largura para exibir 4 obras por linha com espaçamento */
+            text-align: center;
+            margin-bottom: 20px; /* Espaçamento abaixo de cada obra */
+            padding: 10px; /* Espaçamento interno da caixa */
+            border: 1px solid #ddd; /* Borda da caixa */
+            background-color: #fff; /* Cor de fundo da caixa */
+            border-radius: 5px; /* Borda arredondada da caixa */
+            box-sizing: border-box; /* Incluir padding e borda na largura especificada */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra da caixa */
         }
         .artwork img {
-            width: 5cm;
-            height: 5cm;
+            width: 100%;
+            height: auto;
             border-radius: 5px;
             margin-bottom: 10px;
         }
@@ -109,18 +111,30 @@
         }
         .highlighted-artworks {
             margin-top: 20px;
+            width: 100%; /* Garante largura total para as obras em destaque */
             display: flex;
-            justify-content: space-between;
+            flex-wrap: wrap;
+            justify-content: flex-start;
         }
         .highlighted-artwork {
-            width: 20%; /* Ajuste conforme necessário */
+            width: calc(25% - 20px); /* Largura para exibir 4 obras por linha com espaçamento */
             text-align: center;
+            margin-bottom: 20px; /* Espaçamento abaixo de cada obra */
+            padding: 10px; /* Espaçamento interno da caixa */
+            border: 1px solid #ddd; /* Borda da caixa */
+            background-color: #fff; /* Cor de fundo da caixa */
+            border-radius: 5px; /* Borda arredondada da caixa */
+            box-sizing: border-box; /* Incluir padding e borda na largura especificada */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra da caixa */
         }
         .highlighted-artwork img {
             width: 100%;
             height: auto;
             border-radius: 5px;
             margin-bottom: 10px;
+        }
+        .highlighted-artwork h3, .highlighted-artwork p {
+            margin: 0;
         }
     </style>
 </head>
@@ -154,14 +168,18 @@
     <div class="highlighted-artworks">
         <!-- Espaços para obras destacadas fora da pesquisa -->
         <div class="highlighted-artwork">
-            <img src="destaque1.jpg" alt="Obra Destaque 1">
-            <h3>Nome do Artista 1</h3>
-            <p>Título da Obra 1</p>
+            <a href="inclusion_of_artwork.html">
+                <img src="destaque1.jpg" alt="Obra Destaque 1">
+                <h3>Nome do Artista 1</h3>
+                <p>Título da Obra 1</p>
+            </a>
         </div>
         <div class="highlighted-artwork">
-            <img src="destaque2.jpg" alt="Obra Destaque 2">
-            <h3>Nome do Artista 2</h3>
-            <p>Título da Obra 2</p>
+            <a href="inclusion_of_artwork.html">
+                <img src="destaque2.jpg" alt="Obra Destaque 2">
+                <h3>Nome do Artista 2</h3>
+                <p>Título da Obra 2</p>
+            </a>
         </div>
         <!-- Adicione mais divs .highlighted-artwork conforme necessário -->
     </div>
@@ -178,17 +196,20 @@
             {
                 title: 'Mona Lisa',
                 artist: 'Leonardo da Vinci',
-                description: 'A famosa pintura do Renascimento italiano.'
+                year: 1503,
+                professor: 'N/A'
             },
             {
                 title: 'A Noite Estrelada',
                 artist: 'Vincent van Gogh',
-                description: 'Uma das obras mais conhecidas de van Gogh.'
+                year: 1889,
+                professor: 'N/A'
             },
             {
                 title: 'O Grito',
                 artist: 'Edvard Munch',
-                description: 'Uma expressão intensa de angústia e desespero.'
+                year: 1893,
+                professor: 'N/A'
             },
             // Adicione mais obras conforme necessário
         ];
@@ -196,7 +217,9 @@
         // Filtrar obras com base na pesquisa
         const filteredArtworks = artworks.filter(artwork =>
             artwork.title.toLowerCase().includes(query) ||
-            artwork.artist.toLowerCase().includes(query)
+            artwork.artist.toLowerCase().includes(query) ||
+            artwork.year.toString().includes(query) ||
+            artwork.professor.toLowerCase().includes(query)
         );
 
         if (filteredArtworks.length > 0) {
@@ -204,13 +227,17 @@
                 const artworkDiv = document.createElement('div');
                 artworkDiv.classList.add('artwork');
 
-                const titleElement = document.createElement('h3');
-                titleElement.textContent = artwork.title;
-                artworkDiv.appendChild(titleElement);
+                const artworkLink = document.createElement('a');
+                artworkLink.href = 'inclusion_of_artwork.html'; // Link para a página de detalhes da obra
+                artworkDiv.appendChild(artworkLink);
 
-                const artistElement = document.createElement('p');
-                artistElement.textContent = `Artista: ${artwork.artist}`;
-                artworkDiv.appendChild(artistElement);
+                const titleElement = document.createElement('h3');
+                titleElement.textContent = artwork.artist;
+                artworkLink.appendChild(titleElement);
+
+                const detailsElement = document.createElement('p');
+                detailsElement.textContent = `${artwork.title}, ${artwork.year}, ${artwork.professor}`;
+                artworkLink.appendChild(detailsElement);
 
                 resultsContainer.appendChild(artworkDiv);
             });
@@ -224,5 +251,4 @@
 
 </body>
 </html>
-
 

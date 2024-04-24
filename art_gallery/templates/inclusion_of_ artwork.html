@@ -51,7 +51,7 @@
             margin-bottom: 8px;
             display: block;
         }
-        input[type="text"], input[type="number"] {
+        input[type="text"], input[type="number"], input[type="file"] {
             width: 100%;
             padding: 10px;
             border: 1px solid #ddd;
@@ -80,7 +80,7 @@
 </header>
 
 <div class="container">
-    <form id="artworkForm">
+    <form id="artworkForm" enctype="multipart/form-data">
         <label for="artist">Artista:</label>
         <input type="text" id="artist" name="artist" required>
 
@@ -92,6 +92,9 @@
 
         <label for="professor">Professor:</label>
         <input type="text" id="professor" name="professor" required>
+
+        <label for="image">Imagem:</label>
+        <input type="file" id="image" name="image" accept="image/*" required>
 
         <button type="submit">Adicionar Obra</button>
     </form>
@@ -106,9 +109,12 @@
         const year = document.getElementById('year').value;
         const professor = document.getElementById('professor').value;
 
+        // Obter a referência ao campo de upload de imagem
+        const imageFile = document.getElementById('image').files[0];
+
         // Aqui você pode processar os dados enviados, como enviar para um servidor ou adicionar a uma lista local
         console.log(`Artista: ${artist}, Título: ${title}, Ano: ${year}, Professor: ${professor}`);
-        alert('Obra de arte adicionada com sucesso!'); // Exemplo: exibe um alerta
+        console.log('Imagem selecionada:', imageFile);
 
         // Limpar o formulário após o envio
         this.reset();
