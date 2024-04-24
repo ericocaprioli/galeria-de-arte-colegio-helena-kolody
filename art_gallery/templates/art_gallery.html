@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GACHK</title>
+    <!-- Inclua a biblioteca Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        header {
+            background-color: #1e335f; /* Azul escuro */
+            color: #fff;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        h1 {
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+        .admin-link {
+            font-size: 24px;
+            color: #fff;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+        .admin-link:hover {
+            opacity: 0.7;
+        }
+        .main-image-container {
+            height: 8cm; /* Altura da box da imagem principal */
+            width: 100%; /* Ocupa toda a largura da página */
+            background-color: #fff;
+            overflow: hidden;
+        }
+        .main-image {
+            width: 100%;
+            height: 100%;
+            background-image: url('caminho-para-sua-imagem.jpg'); /* Substitua com o caminho da sua imagem */
+            background-size: cover;
+            background-position: center;
+        }
+        .container {
+            display: flex;
+            flex: 1;
+            padding: 20px;
+        }
+        .search-container {
+            width: 10cm;
+            max-width: 100%;
+            background-color: #fff;
+            padding: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            margin-right: 20px;
+            overflow: hidden; /* Para esconder conteúdo extra */
+        }
+        input[type="text"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .artwork-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .artwork {
+            width: calc(50% - 10px); /* Para ocupar metade da largura com espaço entre as imagens */
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .artwork img {
+            width: 5cm;
+            height: 5cm;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .artwork h3, .artwork p {
+            margin: 0;
+        }
+        .highlighted-artworks {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .highlighted-artwork {
+            width: 20%; /* Ajuste conforme necessário */
+            text-align: center;
+        }
+        .highlighted-artwork img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<header style="display: flex; justify-content: space-between; align-items: center;">
+    <h1 style="margin: 0;">
+        GACHK
+    </h1>
+    <a href="admin.html" class="admin-link" title="Administração" style="color: #fff; text-decoration: none;">
+        <i class="fas fa-lock"></i>
+    </a>
+</header>
+
+<div class="main-image-container">
+    <div class="main-image" style="background-image: url('caminho-para-sua-imagem.jpg');"></div>
+</div>
+
+<div class="container">
+    <div class="search-container">
+        <div class="search-wrapper">
+            <input type="text" id="searchInput" placeholder="Pesquisar...">
+            <button onclick="search()">Pesquisar</button>
+        </div>
+        
+        <div class="artwork-container" id="searchResults">
+            <!-- Aqui serão exibidos os resultados da pesquisa -->
+        </div>
+    </div>
+    
+    <div class="highlighted-artworks">
+        <!-- Espaços para obras destacadas fora da pesquisa -->
+        <div class="highlighted-artwork">
+            <img src="destaque1.jpg" alt="Obra Destaque 1">
+            <h3>Nome do Artista 1</h3>
+            <p>Título da Obra 1</p>
+        </div>
+        <div class="highlighted-artwork">
+            <img src="destaque2.jpg" alt="Obra Destaque 2">
+            <h3>Nome do Artista 2</h3>
+            <p>Título da Obra 2</p>
+        </div>
+        <!-- Adicione mais divs .highlighted-artwork conforme necessário -->
+    </div>
+</div>
+
+<script>
+    function search() {
+        const query = document.getElementById('searchInput').value.toLowerCase();
+        const resultsContainer = document.getElementById('searchResults');
+        resultsContainer.innerHTML = ''; // Limpa os resultados anteriores
+
+        // Simulação de dados de obras de arte
+        const artworks = [
+            {
+                title: 'Mona Lisa',
+                artist: 'Leonardo da Vinci',
+                description: 'A famosa pintura do Renascimento italiano.'
+            },
+            {
+                title: 'A Noite Estrelada',
+                artist: 'Vincent van Gogh',
+                description: 'Uma das obras mais conhecidas de van Gogh.'
+            },
+            {
+                title: 'O Grito',
+                artist: 'Edvard Munch',
+                description: 'Uma expressão intensa de angústia e desespero.'
+            },
+            // Adicione mais obras conforme necessário
+        ];
+
+        // Filtrar obras com base na pesquisa
+        const filteredArtworks = artworks.filter(artwork =>
+            artwork.title.toLowerCase().includes(query) ||
+            artwork.artist.toLowerCase().includes(query)
+        );
+
+        if (filteredArtworks.length > 0) {
+            filteredArtworks.forEach(artwork => {
+                const artworkDiv = document.createElement('div');
+                artworkDiv.classList.add('artwork');
+
+                const titleElement = document.createElement('h3');
+                titleElement.textContent = artwork.title;
+                artworkDiv.appendChild(titleElement);
+
+                const artistElement = document.createElement('p');
+                artistElement.textContent = `Artista: ${artwork.artist}`;
+                artworkDiv.appendChild(artistElement);
+
+                resultsContainer.appendChild(artworkDiv);
+            });
+        } else {
+            const noResultsMessage = document.createElement('p');
+            noResultsMessage.textContent = 'Nenhuma obra encontrada.';
+            resultsContainer.appendChild(noResultsMessage);
+        }
+    }
+</script>
+
+</body>
+</html>
+
+
