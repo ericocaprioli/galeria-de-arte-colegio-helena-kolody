@@ -6,7 +6,7 @@ from django.conf import settings
 # Create your views here.
 def upload_image(request):
     if request.method == "GET":
-        return render (request, "upload_image.html")
+        return render (request, "upload_image/upload_image.html")
     elif request.method == "POST":
         file = request.FILES.get('the_file')
         img = Image.open(file)
@@ -14,4 +14,4 @@ def upload_image(request):
         img = img.save(path)
 
         print(file)
-        return render(request, "upload_image_concluded.html")
+        return render(request, "upload_image/upload_image_concluded.html")
