@@ -25,3 +25,10 @@ O Django já entrega um servidor de testes, no qual não pode ser utilizado na p
 ```
 python manage.py runserver
 ```
+
+## Realizando as migrações
+O Django possui uma técnologia que é muito comum em outras linguagens de programação, porém extremamente útil. Essa técnologia se chama ORM (Object-Relational-Manager), um banco de dados é criado apartir das models do projeto. O termo migração será muito comum nesse momento, o termo é a ação de tornar as classes models, tabelas no banco de dados. Como as migrações já foram criadas com `makemigrations` iremos apenas realiza-lás:
+```
+python manage.py migrate
+```
+Com isso não iremos mais ver aquela mensagem vermelha sobre as `unapplied migrations`.
