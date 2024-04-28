@@ -32,3 +32,18 @@ O Django possui uma técnologia que é muito comum em outras linguagens de progr
 python manage.py migrate
 ```
 Com isso não iremos mais ver aquela mensagem vermelha sobre as `unapplied migrations`.
+
+## Adcionando um Superusuário 
+Para criar usuários administradores, é necessário utilizar o seguinte comando: 
+```
+python manage.py createsuperuser
+```
+Após isso será necesspario informar uma série de informações, pressionando `enter` entre elas.
+``` Username: admin ```
+``` Email address: admin@example.com ```
+```
+Password: **********
+Password (again): *********
+Superuser created successfully.
+```
+Concluíndo a criação do superusuário, será possível fazer login no endereço [/admin](localhost:8000/admin). Assim visualizando todas as tabelas, classes models e objetos criados.
