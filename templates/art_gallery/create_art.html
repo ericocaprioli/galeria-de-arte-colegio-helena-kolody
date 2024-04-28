@@ -1,0 +1,17 @@
+<form action="{% url 'inclusion' %}" method="post" enctype="multipart/form-data" id="artworkForm">
+    {% csrf_token %}
+
+    <label for="title">Título da Obra:</label>
+    <input type="text" id="title" name="title" maxlength="20" required>
+
+    <label for="year">Ano da Obra:</label>
+    <input type="date" id="year" name="year" required>
+
+    <label for="professor">Professor:</label>
+    <input type="text" id="professor" name="professor" maxlength="20" required>
+
+    <label for="image">Imagem:</label>
+    <input type="file" id="image" name="image_art" accept="image/*" required>
+
+    <input class="button_submit" type="submit" value="Adicionar Obra"/>
+</form>

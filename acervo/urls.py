@@ -23,7 +23,8 @@ from apps.upload_image import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('upload_image/', views.upload_image, name="upload_image"),
-    path('', include("apps.art_gallery.urls"))
+    path('', include("apps.art_gallery.urls")),
+    path('auth/', include("apps.users.urls")),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,11 @@
+<!-- Espaços para obras destacadas fora da pesquisa -->
+{% for art in object_list %}
+<div class="highlighted-artwork">
+    <a href="/media/{{ art.arq }}">
+        <img src="/media/{{ art.arq }}" alt="Obra em Destaque">
+        <h3>{{ art.title }}</h3>
+        <p>{{ art.user }}</p>
+        <p>{{ art.date_at|date }}</p>
+    </a>
+</div>
+{% endfor %}

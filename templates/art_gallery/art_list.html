@@ -10,26 +10,19 @@
     <h1 style="margin: 0;">
         GACHK
     </h1>
-    <a href="admin.html" class="admin-link" title="Administração" style="color: #fff; text-decoration: none;">
+    <a href="/inclusion" class="inclusion" title="Adicionar Arte" style="color: #fff; text-decoration: none;">
         <i class="fas fa-lock"></i>
     </a>
 </header>
 
 <div class="main-image-container">
-    <div class="main-image" style="background-image: url('caminho-para-sua-imagem.jpg');"></div>
+    <div class="main-image" style="background-image: url('media/1.png');"></div>
 </div>
 
 <div class="container">
     <!-- Pesquisar -->
     <div class="search-container">
-        <div class="search-wrapper">
-            <input type="text" id="searchInput" placeholder="Pesquisar...">
-            <button onclick="search()">Pesquisar</button>
-        </div>
-        
-        <div class="artwork-container" id="searchResults">
-            <!-- Aqui serão exibidos os resultados da pesquisa -->
-        </div>
+        {% include 'art_gallery/search_art.html'%}
     </div>
     <!-- Melhores artes -->
     <div class="highlighted-artworks">

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="GET">
+    {% csrf_token %}
+    <input type="submit" value="Enviar outras artes">
+</form>
+    <a href=".." class="back-link" title="Voltar"><button>Voltar para tela principal</button></a>
+{% endblock %}
