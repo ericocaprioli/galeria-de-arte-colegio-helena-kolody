@@ -39,8 +39,12 @@ Para criar usuários administradores, é necessário utilizar o seguinte comando
 python manage.py createsuperuser
 ```
 Após isso será necesspario informar uma série de informações, pressionando `enter` entre elas.
-``` Username: admin ```
-``` Email address: admin@example.com ```
+``` 
+Username: admin 
+```
+```
+ Email address: admin@example.com 
+```
 ```
 Password: **********
 Password (again): *********
