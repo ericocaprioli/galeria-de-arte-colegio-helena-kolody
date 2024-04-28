@@ -46,4 +46,4 @@ Password: **********
 Password (again): *********
 Superuser created successfully.
 ```
-Concluíndo a criação do superusuário, será possível fazer login no endereço [/admin](localhost:8000/admin). Assim visualizando todas as tabelas, classes models e objetos criados.
+Concluíndo a criação do superusuário, será possível fazer login no endereço localhost:8000/admin. Assim visualizando todas as tabelas, classes models e objetos criados.
